@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-client-deploy
+  labels:
+    app: app-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-client
+  template:
+    metadata:
+      name: app-client-tmpl
+      labels:
+        app: app-client
+    spec:
+      containers:
+        - name: app-client
+          image: leo1999806/app-client:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000

@@ -1,0 +1,16 @@
+services:
+  server:
+    build: server
+    command: ["python", "app.py"]
+    image: app-server
+    ports:
+      - "5000:5000"
+
+  client:
+    build: client
+    command: ["npm", "start"]
+    image: app-client
+    ports:
+      - '3000:3000'
+    depends_on:
+      - server
